@@ -1,84 +1,90 @@
-name: 🎯 Ticket General (Bug, Feature, Tarea)
-description: Reportar un error, solicitar una funcionalidad o crear una tarea técnica.
-title: "[TIPO]: <Título corto y descriptivo>"
+name: 🎯 Project Ticket (Bug, Feature, Task)
+description: Report a bug, request a feature, or create a technical task.
+title: "[TYPE]: <Short and descriptive title>"
 labels: ["needs-triage"]
 body:
   - type: markdown
     attributes:
       value: |
-        👋 **Bienvenido.** Rellena esta ficha para mantener el historial del proyecto limpio y comprensible a largo plazo.
+        👋 **Welcome.** Please fill out this form to keep the project history clean and understandable long-term.
 
   - type: dropdown
     id: issue-type
     attributes:
-      label: Tipo de Issue
-      description: ¿Qué clase de ticket estás abriendo?
+      label: Issue Type
+      description: Select the main category.
       options:
-        - ✨ Feature (Nueva funcionalidad)
-        - 🐛 Bug / Fix (Error o corrección)
-        - 🛠️ Tarea Técnica / Refactor
-        - 📚 Documentación
-        - 🚀 Performance (Mejora de rendimiento)
+        - ✨ Feature (New Functionality)
+        - 🐛 Bug / Fix
+        - 🛠️ Technical Task / Refactor
+        - 📚 Documentation
+        - 🚀 Performance
     validations:
       required: true
 
   - type: dropdown
     id: priority
     attributes:
-      label: Prioridad
+      label: Priority
       options:
-        - 🔴 Alta (Bloqueante / Crítico)
-        - 🟡 Media (Importante)
-        - 🟢 Baja (Puede esperar / Nice to have)
+        - 🔴 High (Blocker / Critical)
+        - 🟡 Medium (Important)
+        - 🟢 Low (Nice to have)
     validations:
       required: true
 
   - type: textarea
     id: context
     attributes:
-      label: Contexto y Objetivo
-      description: |
-        Si es Feature: ¿Qué problema resuelve y qué valor aporta?
-        Si es Bug: ¿Qué está fallando y cuál es el impacto?
-      placeholder: "Explica el 'Por qué'. Ej: El usuario no puede completar el pago porque el botón desaparece..."
+      label: Context & Objective (The "Why")
+      description: Explain the reason for this ticket. Mention previous PRs or commits if necessary.
+      placeholder: |
+        BUG EXAMPLE:
+        "The checkout button looks broken on mobile since the last release. It seems related to the merge of PR #45 or commit 8a2b3c which touched CSS styles."
+
+        FEATURE EXAMPLE:
+        "We need to implement the attached design (see Resources) for the Dashboard, as the current one confuses users."
     validations:
       required: true
 
   - type: textarea
     id: details
     attributes:
-      label: Detalles Técnicos / Pasos
-      description: |
-        Si es Feature: Describe la implementación técnica sugerida.
-        Si es Bug: Lista los pasos exactos para reproducir el error.
+      label: Technical Details / Steps (The "How")
+      description: Steps to reproduce (Bugs) or Implementation Plan (Features).
       placeholder: |
-        Para Features:
-        - Crear componente X...
-        - Modificar endpoint Y...
+        IF BUG (Steps and Refs):
+        1. Checkout to commit 7f8g9h.
+        2. Navigate to /profile.
+        3. The function 'calculateTotal()' returns NaN (see attached log).
 
-        Para Bugs:
-        1. Ir a la página de inicio.
-        2. Hacer click en...
-        3. El error aparece cuando...
+        IF FEATURE (Plan):
+        - Create new component 'ThemeToggle.tsx'.
+        - Update user endpoints in the API.
     validations:
       required: true
 
   - type: textarea
-    id: expected-results
+    id: acceptance-criteria
     attributes:
-      label: Criterios de Aceptación / Comportamiento Esperado
-      description: ¿Qué debe ocurrir exactamente para considerar este ticket "Terminado" o "Resuelto"?
+      label: Acceptance Criteria (Definition of Done)
+      description: Exact conditions required to close this ticket.
       value: |
-        - [ ] 
-        - [ ] 
+        - [ ] Functionality meets requirements / Bug is not reproducible.
+        - [ ] Unit tests added or updated.
+        - [ ] Documentation updated (if applicable).
     validations:
       required: true
 
   - type: textarea
-    id: environment
+    id: resources
     attributes:
-      label: Entorno y Recursos (Opcional)
-      description: Versión del navegador, sistema operativo, enlaces a Figma, Logs de error, capturas de pantalla, etc.
-      placeholder: "Chrome v90, MacOS, Link al diseño en Figma..."
+      label: Visual Resources & References
+      description: Paste screenshots, Figma links, Stack Traces, or Server Logs here.
+      placeholder: |
+        - Error Screenshot: (Paste image here with Ctrl+V)
+        - Server Log: (Paste console error here)
+        - Related: See Issue #101
+        - Whatever you see neccesary that helps to finish this issue
     validations:
       required: false
