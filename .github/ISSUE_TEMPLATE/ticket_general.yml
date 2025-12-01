@@ -1,0 +1,84 @@
+name: 🎯 Ticket General (Bug, Feature, Tarea)
+description: Reportar un error, solicitar una funcionalidad o crear una tarea técnica.
+title: "[TIPO]: <Título corto y descriptivo>"
+labels: ["needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        👋 **Bienvenido.** Rellena esta ficha para mantener el historial del proyecto limpio y comprensible a largo plazo.
+
+  - type: dropdown
+    id: issue-type
+    attributes:
+      label: Tipo de Issue
+      description: ¿Qué clase de ticket estás abriendo?
+      options:
+        - ✨ Feature (Nueva funcionalidad)
+        - 🐛 Bug / Fix (Error o corrección)
+        - 🛠️ Tarea Técnica / Refactor
+        - 📚 Documentación
+        - 🚀 Performance (Mejora de rendimiento)
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Prioridad
+      options:
+        - 🔴 Alta (Bloqueante / Crítico)
+        - 🟡 Media (Importante)
+        - 🟢 Baja (Puede esperar / Nice to have)
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Contexto y Objetivo
+      description: |
+        Si es Feature: ¿Qué problema resuelve y qué valor aporta?
+        Si es Bug: ¿Qué está fallando y cuál es el impacto?
+      placeholder: "Explica el 'Por qué'. Ej: El usuario no puede completar el pago porque el botón desaparece..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: details
+    attributes:
+      label: Detalles Técnicos / Pasos
+      description: |
+        Si es Feature: Describe la implementación técnica sugerida.
+        Si es Bug: Lista los pasos exactos para reproducir el error.
+      placeholder: |
+        Para Features:
+        - Crear componente X...
+        - Modificar endpoint Y...
+
+        Para Bugs:
+        1. Ir a la página de inicio.
+        2. Hacer click en...
+        3. El error aparece cuando...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected-results
+    attributes:
+      label: Criterios de Aceptación / Comportamiento Esperado
+      description: ¿Qué debe ocurrir exactamente para considerar este ticket "Terminado" o "Resuelto"?
+      value: |
+        - [ ] 
+        - [ ] 
+    validations:
+      required: true
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Entorno y Recursos (Opcional)
+      description: Versión del navegador, sistema operativo, enlaces a Figma, Logs de error, capturas de pantalla, etc.
+      placeholder: "Chrome v90, MacOS, Link al diseño en Figma..."
+    validations:
+      required: false
